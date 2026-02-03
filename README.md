@@ -245,7 +245,8 @@ This document lists the available configuration options for the `nice_oled` shie
 
 | Variable                                                         | Type | Default | Description                                       |
 |------------------------------------------------------------------|------|---------|---------------------------------------------------|
-| `CONFIG_NICE_OLED_WIDGET_HID_INDICATORS`                         | bool | `y`     | Enable HID indicators                             |
+| `CONFIG_NICE_OLED_WIDGET_HID_INDICATORS`                         | bool | `y`     | Enable HID indicators (Central only)              |
+| `CONFIG_NICE_OLED_WIDGET_HID_INDICATORS_PERIPHERAL`              | bool | `n`     | Enable HID indicators on peripheral               |
 | `CONFIG_ZMK_HID_INDICATORS`                                      | bool | `y`     | Enable HID indicators (Core ZMK)                  |
 | `CONFIG_NICE_OLED_WIDGET_HID_INDICATORS_LUNA`                    | bool | `n`     | Enable HID indicators luna                        |
 | `CONFIG_NICE_OLED_WIDGET_HID_INDICATORS_LUNA_ONLY_CAPSLOCK`      | bool | `y`     | Enable HID indicators luna only on CapsLock       |
@@ -253,6 +254,8 @@ This document lists the available configuration options for the `nice_oled` shie
 | `CONFIG_NICE_OLED_WIDGET_HID_INDICATORS_BONGO_CAT`               | bool | `n`     | Enable HID indicators bongo cat                   |
 | `CONFIG_NICE_OLED_WIDGET_HID_INDICATORS_BONGO_CAT_ONLY_CAPSLOCK` | bool | `y`     | Enable HID indicators bongo cat only on CapsLock  |
 | `CONFIG_NICE_OLED_WIDGET_HID_INDICATORS_BONGO_CAT_ANIMATION_MS`  | int  | `300`   | Luna Animation in ms for HID Indicators bongo cat |
+
+Note: HID indicators animations (Luna/Bongo Cat) can be used on both central and peripheral displays. The animation settings are shared between both displays.
 
 ## Raw HID
 
@@ -408,6 +411,13 @@ These variables allow users to customize widget positions. Each widget has X and
 |----------|------|--------------|----------------|-------------|
 | `CONFIG_NICE_OLED_WIDGET_ANIMATION_PERIPHERAL_CUSTOM_X` | int | `18` | `36` | Animation peripheral X position |
 | `CONFIG_NICE_OLED_WIDGET_ANIMATION_PERIPHERAL_CUSTOM_Y` | int | `-18` | `0` | Animation peripheral Y position |
+
+### HID Indicators Peripheral Position
+
+| Variable | Type | Default OLED | Default ePaper | Description |
+|----------|------|--------------|----------------|-------------|
+| `CONFIG_NICE_OLED_WIDGET_HID_INDICATORS_PERIPHERAL_CUSTOM_X` | int | `36` / `64` (Bongo) | `100` | HID indicators peripheral widget X position |
+| `CONFIG_NICE_OLED_WIDGET_HID_INDICATORS_PERIPHERAL_CUSTOM_Y` | int | `0` / `-9` (Bongo) | `15` (Luna) / `8` (Bongo) | HID indicators peripheral widget Y position |
 
 ### Raw HID Widget Position
 

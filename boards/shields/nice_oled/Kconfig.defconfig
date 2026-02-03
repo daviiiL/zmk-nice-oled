@@ -172,6 +172,19 @@ endif # NICE_OLED_WIDGET_ANIMATION_PERIPHERAL || NICE_OLED_WIDGET_STATIC_IMAGE_P
 config NICE_OLED_WIDGET_PERIPHERAL
     bool "Enable test widget on peripheral"
     default n
+##}}}
+### NICE OLED WIDGET HID INDICATORS PERIPHERAL {{{
+config NICE_OLED_WIDGET_HID_INDICATORS_PERIPHERAL
+    bool "Enable HID indicators on peripheral"
+    default n
+
+if NICE_OLED_WIDGET_HID_INDICATORS_PERIPHERAL
+
+config ZMK_HID_INDICATORS
+    bool "Enable HID indicators"
+    default y
+
+endif # NICE_OLED_WIDGET_HID_INDICATORS_PERIPHERAL }}}
 ### ONLY FOR PERIPHERAL END }}}
 ### ANIMATION ON PERIPHERAL END }}}
 ### WIDGET ON CENTRAL START {{{
@@ -723,6 +736,23 @@ config NICE_OLED_WIDGET_ANIMATION_PERIPHERAL_CUSTOM_Y
     default -18 if NICE_OLED_ON
     default 0 if NICE_EPAPER_ON
     default -18
+##}}}
+
+## HID INDICATORS PERIPHERAL POSITION {{{
+config NICE_OLED_WIDGET_HID_INDICATORS_PERIPHERAL_CUSTOM_X
+    int "HID indicators peripheral widget X position"
+    default 64 if NICE_OLED_ON && NICE_OLED_WIDGET_HID_INDICATORS_BONGO_CAT
+    default 36 if NICE_OLED_ON
+    default 100 if NICE_EPAPER_ON
+    default 36
+
+config NICE_OLED_WIDGET_HID_INDICATORS_PERIPHERAL_CUSTOM_Y
+    int "HID indicators peripheral widget Y position"
+    default -9 if NICE_OLED_ON && NICE_OLED_WIDGET_HID_INDICATORS_BONGO_CAT
+    default 0 if NICE_OLED_ON
+    default 15 if NICE_EPAPER_ON && !NICE_OLED_WIDGET_HID_INDICATORS_BONGO_CAT
+    default 8 if NICE_EPAPER_ON
+    default 0
 ##}}}
 
 ## RAW HID WIDGET POSITION {{{

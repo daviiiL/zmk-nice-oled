@@ -88,6 +88,8 @@ if(CONFIG_ZMK_DISPLAY AND CONFIG_NICE_OLED_WIDGET_STATUS)
         target_sources_ifdef(CONFIG_NICE_OLED_WIDGET_ANIMATION_PERIPHERAL_WPM app PRIVATE widgets/luna.c)
       endif()
 
+      target_sources_ifdef(CONFIG_NICE_OLED_WIDGET_HID_INDICATORS_PERIPHERAL app PRIVATE widgets/hid_indicators.c)
+
       zephyr_library_sources(assets/crystal.c)
       target_sources_ifdef(CONFIG_NICE_OLED_WIDGET_ANIMATION_PERIPHERAL_CAT app PRIVATE assets/cat.c)
       target_sources_ifdef(CONFIG_NICE_OLED_WIDGET_ANIMATION_PERIPHERAL_SPACEMAN app PRIVATE assets/spaceman.c)
